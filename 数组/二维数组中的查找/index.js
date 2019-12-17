@@ -67,5 +67,5 @@
   ]
   
   console.time('Traversing')
-  console.log(find(33 , arr))
+  console.log(Traversing(30 , arr))
   console.timeEnd('Traversing')
