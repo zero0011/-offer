@@ -1,29 +1,72 @@
 /**
- * @description { 链表类 }
+ * 循环链表的实现类
  */
 
- /**
-  * Node 类表示要添加的元素 , 他有 两个属性 ,一个element ,表示添加到链表中具体的值,
-  * 另一个是 next , 表示要指向链表的下一个元素的指针
-  */
+ class Node {
+     constructor(element) {
+         this.element = element;
+         this.next = null;
+     }
+ }
 
-
-function LinkedList () {
-    //Node 类声明
-    var Node = function(element) {
-        this.element = element ;
-        this.next = null ;
-    } ;
-    // 初始化链表长度
-    let length = 0 ;
-    // 初始化第一个元素
-    let head = null ;
-    // 向链表尾部添加一个新的元素
-    this.append = function (element) {
-        //初始化添加的 Node 实例
-        let node = new Node(element) , current ;
-        if(head === null) {
-            b
+ class CircularLinkedList {
+     constructor() {
+        this.head = new Node(-1);
+        this.length = 0;
+     }
+     append(element) {
+        let newNode =  new Node(element);
+        let currNode = this.head;
+        let len = this.length;
+        if(this.length === 0) {
+            currNode.next = newNode;
+            newNode.next = this.head;
         }
-    }
-}
+        else {
+            while(len) {
+                currNode = currNode.next;
+                len--;
+            }
+            currNode.next = newNode;
+            newNode.next = this.head;
+        }
+        this.length++;
+     }
+     display () {
+         let currNode = this.head;
+         let len = this.length;
+         while(len) {
+             console.log(currNode.next.element);
+             currNode = currNode.next;
+             len--;
+         }
+     }
+     /**
+      * 移出第k个结点
+      */
+     removeAtK (index) {
+        
+     }
+     /**
+      * 判断是不是环形链表
+      */
+     isCycle () {
+        // 快慢指针
+        let slow = this.head;
+        let fast = this.head;
+        while(1) {
+            if(slow === fast || fast.next === slow) {
+                return true;
+            } else if(fast === null || fast.next === null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+     }
+     get size() {
+         return this.length;
+     }
+ }
+
+module.exports =  CircularLinkedList;
