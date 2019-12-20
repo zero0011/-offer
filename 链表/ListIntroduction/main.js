@@ -62,6 +62,18 @@ const Node = require('./ListNode.js');
              currNode = currNode.next;
          }
      }
+
+     /**
+      * 向链表最好添加元素
+      */
+     append (item) {
+        let newNode = new Node(item);
+        let currNode = this.head;
+        while(currNode.next !== null) {
+            currNode = currNode.next;
+        }
+        currNode.next = newNode;
+     }
  }
 
 module.exports = LinkedList;

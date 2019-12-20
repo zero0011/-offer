@@ -1,4 +1,4 @@
-const LinkedList = require('./main.js');
+const LinkedList = require('./main.js.js.js');
 
 // 创建一个 LinkedList 实例
 
