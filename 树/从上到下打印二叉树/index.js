@@ -17,7 +17,7 @@ let head = tree.tree;
     queue.push(root);
     while(queue.length !== 0) {
         let res = queue.shift();
-        // console.log(res);
+        console.log(res.element);
         if(res.lChild !== null) {
             queue.push(res.lChild);
         }
